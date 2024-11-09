@@ -1,27 +1,15 @@
+// 45  days challenge question
 class Solution {
     public int findDuplicate(int[] nums) {
-        HashMap<Integer, Integer> map=new HashMap<Integer, Integer>();
+        HashMap<Integer, Integer> map=new HashMap<>();
         for(int i=0; i<nums.length; i++)
         {
             if(map.containsKey(nums[i]))
-            {
-                map.put(nums[i],map.get(nums[i])+1);
-            }
+             return nums[i];
             else
-            {
-                map.put(nums[i],1);
-            }
+            map.put(nums[i],nums[i]);
+            
         }
-        int flag=-1;
-        for(int i=0; i<map.size(); i++)
-        {
-            if(map.get(nums[i])>1)
-            {
-                flag=nums[i];
-                break;
-            }
-        }
-        return flag;
-        
+        return -1;
     }
 }
