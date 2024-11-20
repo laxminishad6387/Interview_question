@@ -1,3 +1,4 @@
+// sliding window problem solve using two pointer approch
 class Solution {
     public int minSubArrayLen(int target, int[] nums) {
         int j=0;
