@@ -1,4 +1,4 @@
-// dp concept(bottom-up approch)
+// dp concept(top-down approch)
 
 class Solution {
     public int fib(int n) {
