@@ -2,7 +2,7 @@ class Solution {
     public double findMedianSortedArrays(int[] arr1, int[] arr2) {
         int m=arr1.length;
         int n=arr2.length;
-        double median=0.0;
+        double median;
         int i=0;
         int j=0;
         int ans[]=new int[m+n];
@@ -16,17 +16,12 @@ class Solution {
             ans[k++]=arr2[j++];
         }
         while(i<m)
-        {
            ans[k++]=arr1[i++];  
-        }
+        
         while(j<n)
-        {
            ans[k++]=arr2[j++];  
-        }
-        // for(int p=0; p<ans.length; p++)
-        // {
-        //     System.out.print(ans[p]+"  ");
-        // }
+        
+       
 
         // find median of two number
         // case 1--> odd length
@@ -38,13 +33,13 @@ class Solution {
             index=index-1;
             median=(double)ans[index];
         }
+        // case 2 --> even length
         else {
             int index=(ans.length)/2;
              int sum=ans[index]+ans[index-1];
             median=(double)sum/(double)2;
-
-
-        }
+          }
+          
         return median;
     }
 }
