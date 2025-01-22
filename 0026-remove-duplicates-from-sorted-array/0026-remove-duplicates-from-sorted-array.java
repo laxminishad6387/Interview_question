@@ -1,26 +1,14 @@
-// 45 days challenge question
 class Solution {
-    public int removeDuplicates(int[] nums) {
-        HashMap<Integer, Integer> map=new HashMap<>();
-       ArrayList<Integer> arr=new ArrayList<>();
-        for(int i=0; i<nums.length; i++)
-        {
-          if(map.containsKey(nums[i]))
-           continue;
-          else
+    public int removeDuplicates(int[] arr) {
+        // base condtion
+        if(arr.length==1)
+          return 1;
+          int j=0;
+          for(int i=1; i<arr.length; i++)
           {
-            map.put(nums[i],1);
-            arr.add(nums[i]);
- 
+            if(arr[i]!=arr[j]) // two indices value are not equal
+            arr[++j]=arr[i];  //first increment the j index than put the value
           }
-
-        }
-        for(int i=0; i<map.size(); i++)
-        {
-            nums[i]=arr.get(i);
-        }
-       
-     
-        return map.size();
+          return j+1;
     }
 }
