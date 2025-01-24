@@ -1,5 +1,6 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
+        // anagram: we compare two string . if both string contain the same charcter in same index than we  called a anaggram
         s=s.toLowerCase();
         t=t.toLowerCase();
        char str1[]=s.toCharArray();
