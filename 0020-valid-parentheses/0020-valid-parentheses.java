@@ -1,36 +1,27 @@
-// solve using stack 
 class Solution {
     public boolean isValid(String s) {
-        Stack<Character> stack1=new Stack<>();
-          char arr1[]=s.toCharArray();
-         for(char n: arr1)
-         {
-            if(n=='{' || n=='[' || n=='(')
-            {
-                stack1.push(n);
-                continue;
-            
-            }
-            else {
-                  if(stack1.empty() && n=='}' || stack1.empty() && n==']'||stack1.empty() && n==')' )
-                   return false;
-                
-               char top=stack1.peek();
-             if(n=='}' && top=='{')
-                stack1.pop();
-            
-             else if(n==')' && top=='(')
-               stack1.pop();
-        
-             else if(n==']' && top=='[')
-               stack1.pop();
+        Stack<Character> st=new Stack<>();
+          char temp[]=s.toCharArray();
+        for(int i=0; i<temp.length; i++)
+        {
+           if(st.empty() && (temp[i]==')' || temp[i]==']' || temp[i]=='}'))
+            return false;
+            else if(temp[i]=='(' || temp[i]=='[' || temp[i]=='{')
+              st.push(temp[i]);
+              else if(temp[i]==')' && st.peek()=='(')
+                st.pop();
+                 else if(temp[i]==']' && st.peek()=='[')
+                st.pop();
+                 else if(temp[i]=='}' && st.peek()=='{')
+                st.pop();
+                else 
+                return false;
 
-             else return false;
-            }
-         }
 
-         if(stack1.empty())
-          return true;
+
+        }
+        if(st.empty())
+         return true;
          else
           return false;
     }
