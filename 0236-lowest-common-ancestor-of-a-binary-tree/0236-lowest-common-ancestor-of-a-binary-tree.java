@@ -10,13 +10,13 @@
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // base condition
-        if(root==null)
+        if(root==null)  //pointer point null position
          return null;
-         else if(root==p || root==q)
+         else if(root==p || root==q)  
           return root;
           TreeNode left=lowestCommonAncestor(root.left, p,  q);
            TreeNode right=lowestCommonAncestor(root.right, p,  q);
-           if(left!=null && right!=null)
+           if(left!=null && right!=null)  //meet first ancestor
              return root;
              else if(left!=null)
               return left;
