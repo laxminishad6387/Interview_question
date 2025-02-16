@@ -12,10 +12,8 @@ class Solution {
             List<Integer>ans=new ArrayList<>();
             for(int i=0; i<n; i++)
             {
-              
-                TreeNode ele=q.remove();
-                
-                ans.add(ele.val);
+              TreeNode ele=q.remove();
+               ans.add(ele.val);
                 if(ele.left!=null)
                 q.add(ele.left);
                 if(ele.right!=null)
