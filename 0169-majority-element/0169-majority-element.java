@@ -1,21 +1,21 @@
-// 45 days challenge question
+
+// Boyer–Moore Voting Algorithm
 class Solution {
     public int majorityElement(int[] nums) {
-        HashMap<Integer, Integer> map=new HashMap<>();
+        int count=0;
+        int candidate=-1;
         for(int i=0; i<nums.length; i++)
         {
-            if(map.containsKey(nums[i]))
-             map.put(nums[i], map.get(nums[i])+1);
-             else
-             map.put(nums[i],1);
-        }
-        for(int i=0; i<nums.length; i++)
-        {
-            if(map.get(nums[i])>nums.length/2)
+            if(count==0)
             {
-                return nums[i];
+               candidate=nums[i];
+               count=1; 
             }
+            else if(candidate==nums[i])
+            count++;
+            else
+            count--;
         }
-        return -1;
+        return candidate;
     }
 }
