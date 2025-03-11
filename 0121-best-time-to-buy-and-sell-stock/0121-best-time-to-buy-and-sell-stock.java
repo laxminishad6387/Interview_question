@@ -1,14 +1,16 @@
-// 45 days challenege question
 class Solution {
     public int maxProfit(int[] nums) {
         int maxProfit=0;
-        int minProfit=Integer.MAX_VALUE;
-        for(int i=0; i<nums.length; i++)
+        int currentProfit=0;
+        int buy=nums[0];
+        for(int i=1; i<nums.length; i++)
         {
-            if(nums[i]<minProfit)
-            minProfit=nums[i];
-            else if((nums[i]-minProfit)>maxProfit)
-             maxProfit=nums[i]-minProfit;
+            if(nums[i]>buy)
+            {
+                currentProfit=nums[i]-buy;
+                maxProfit=Math.max(currentProfit, maxProfit);
+            }else if(nums[i]<buy)
+            buy=nums[i];
         }
         return maxProfit;
     }
