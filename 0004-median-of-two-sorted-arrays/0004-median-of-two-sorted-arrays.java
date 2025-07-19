@@ -1,45 +1,37 @@
 class Solution {
-    public double findMedianSortedArrays(int[] arr1, int[] arr2) {
-        int m=arr1.length;
-        int n=arr2.length;
-        double median;
-        int i=0;
-        int j=0;
-        int ans[]=new int[m+n];
-        int k=0;
-        // merge two array in sorted manner
-        while(i<m && j<n)
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int i=0; int j=0; int k=0;
+        int result[]=new int[nums1.length+nums2.length];
+        while(i<nums1.length && j<nums2.length)
         {
-            if(arr1[i]<=arr2[j])
-            ans[k++]=arr1[i++];
+            if(nums1[i]<=nums2[j])
+             result[k++]=nums1[i++];
+            
             else
-            ans[k++]=arr2[j++];
+            result[k++]=nums2[j++];
         }
-        while(i<m)
-           ans[k++]=arr1[i++];  
+         while(i<nums1.length )
+            result[k++]=nums1[i++];
         
-        while(j<n)
-           ans[k++]=arr2[j++];  
+         while(j<nums2.length)
+           result[k++]=nums2[j++];
         
-       
 
-        // find median of two number
-        // case 1--> odd length
-        int l=ans.length;
-        
-        if(l%2!=0)
+        for(int l=0; l<result.length; l++)
         {
-            int index=(ans.length+1)/2;
-            index=index-1;
-            median=(double)ans[index];
+            System.out.print(result[l]+" ");
         }
-        // case 2 --> even length
-        else {
-            int index=(ans.length)/2;
-             int sum=ans[index]+ans[index-1];
-            median=(double)sum/(double)2;
-          }
-          
-        return median;
+        if(result.length%2==0)
+        {
+            int mid=result.length/2;
+            double median=(double)(result[mid-1]+result[mid])/2;
+            return median;
+        }
+        else{
+            double median=result[result.length/2];
+            return median;
+        }
+       
     }
+
 }
