@@ -1,22 +1,19 @@
-// 45 days challenge question
 class Solution {
-public int maxArea(int[] nums) {
-    //solve using two pointer approch
-         int maxWater=0;
-         int j=nums.length-1;
-         int i=0;
-         
-         while(i<j)
-         {
+    public int maxArea(int[] height) {
+        int i=0; int j=height.length-1;
+        int maxWater=0;
+        while(i<j)
+        {
+            int currentWater=(j-i)*Math.min(height[i], height[j]);
+                maxWater=Math.max(currentWater, maxWater);
+            if(height[i]<=height[j])
+                i++;
             
-             int currentValue=Math.min(nums[i],nums[j])*(j-i);
-              maxWater=Math.max(currentValue,maxWater);
-             
-            if(nums[i]>nums[j])
+            else
               j--;
-              else
-               i++;
-         }
+            
+
+        }
         return maxWater;
     }
 }
