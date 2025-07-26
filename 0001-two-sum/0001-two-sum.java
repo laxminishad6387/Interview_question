@@ -3,25 +3,19 @@ class Solution {
         int result[]=new int[2];
         HashMap<Integer, Integer> map=new HashMap<>();
         for(int i=0; i<nums.length; i++)
-        {
-            map.put(nums[i],i);
-        }
+          map.put(nums[i],i);
+        
     
         for(int i=0; i<nums.length; i++)
         {
-            // case 1
-            if(nums[i]==target && map.containsKey(0))
+        
+            if( map.containsKey(target-nums[i]) && i!=map.get(target-nums[i]))
             {
                 result[0]=i;
-                result[1]=map.get(0);
-                break;
+               result[1]=map.get(target-nums[i]);
+                return result;
             }
-            else if(map.containsKey(target-nums[i]) && map.get(target-nums[i])!=i)
-            {
-                result[0]=i;
-                result[1]=map.get(target-nums[i]);
-                break;
-            }
+           
             
         }
         return result;
