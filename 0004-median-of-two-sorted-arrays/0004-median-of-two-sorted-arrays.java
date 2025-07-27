@@ -17,20 +17,16 @@ class Solution {
            result[k++]=nums2[j++];
         
 
-        for(int l=0; l<result.length; l++)
-        {
-            System.out.print(result[l]+" ");
-        }
+       
         if(result.length%2==0)
         {
             int mid=result.length/2;
-            double median=(double)(result[mid-1]+result[mid])/2;
-            return median;
+            return (double)(result[mid-1]+result[mid])/2;
+            
         }
-        else{
-            double median=result[result.length/2];
-            return median;
-        }
+        else return  (double) result[result.length/2];
+           
+        
        
     }
 
