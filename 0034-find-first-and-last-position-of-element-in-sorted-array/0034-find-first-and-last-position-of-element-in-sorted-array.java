@@ -1,51 +1,45 @@
 class Solution {
-    public int leftsol(int []arr,int low,int high,int target)
-    {
-       int  res=-1; 
-        while(low<=high)
+    public int[] searchRange(int[] nums, int target) {
+        int result[]=new int[2];
+        result[0]=findFirst(nums,target);
+        result[1]=findLast(nums,target);
+        return result;
+    }
+        // find first occurance of target element
+         int  findFirst(int []nums,int target)
         {
-            int mid=(low+high)/2;
-            if(arr[mid]==target)
+            int low=0; int high=nums.length-1; int index=-1;
+            while(low<=high)
             {
-              res=mid;
-              high=mid-1;
+                int mid=(low+high)/2; 
+                if(nums[mid]==target)
+                {
+                    index=mid;
+                    high=mid-1;  //check leftside that any other target value present leftside or not
+                }
+                else if(nums[mid]<target)low=mid+1;
+                else high=mid-1;
+            }
+            return index;
+        }
 
-            }
-            else if(arr[mid]<target)
-             low=mid+1;
-             else
-              high=mid-1;
-        }
-       return res; 
-    }
-     public int rightsol(int []arr,int low,int high,int target)
-    {
-      int res=-1;
-        
-        while(low<=high)
+
+        // find last occurance of target element
+         int  findLast(int []nums,int target)
         {
-            int mid=(low+high)/2;
-            if(arr[mid]==target)
+            int low=0; int high=nums.length-1; int index=-1;
+            while(low<=high)
             {
-              res=mid;
-               low=mid+1;
+                int mid=(low+high)/2; 
+                if(nums[mid]==target)
+                {
+                    index=mid;
+                    low=mid+1;  //check rightside that any other target value present rightside or not
+                }
+                else if(nums[mid]<target)low=mid+1;
+                else high=mid-1;
             }
-            else if(arr[mid]<target)
-             low=mid+1;
-             else
-              high=mid-1;
+            return index;
         }
-       return res;  
-    }
-    public int[] searchRange(int[] arr, int target) {
-       int ans[]=new int[2];
-        ans[0]=-1;
-        ans[1]=-1;
-        int low=0;
-        int high=arr.length-1;
-        ans[0]=leftsol(arr,low, high,target);
-        ans[1]=rightsol(arr,low,high,target);
-        return ans;
-        
-    }
+    
 }
