@@ -1,6 +1,6 @@
 class Solution {
     public int trap(int[] nums) {
-        int left[]=new int[nums.length];
+         int left[]=new int[nums.length];
          left[0]=nums[0];
          int max1=nums[0];
         //  traverse from the left side
