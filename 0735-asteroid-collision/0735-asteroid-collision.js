@@ -1,33 +1,33 @@
+/**
+ * @param {number[]} asteroids
+ * @return {number[]}
+ */
 var asteroidCollision = function(asteroids) {
-    let stack = [];
-
-    for (let ast of asteroids) {
-        let alive = true;
-
-        while (
-            alive &&
-            stack.length > 0 &&
-            stack[stack.length - 1] > 0 &&
-            ast < 0
-        ) {
-            let top = stack[stack.length - 1];
-
-            if (Math.abs(top) < Math.abs(ast)) {
-                stack.pop(); // top explodes
-            } 
-            else if (Math.abs(top) === Math.abs(ast)) {
-                stack.pop(); // both explode
-                alive = false;
-            } 
-            else {
-                alive = false; // current explodes
+    let stack=[];
+    for(let currast of asteroids){
+        console.log(currast);
+        let currastAlive=true;
+        while(currastAlive && stack.length>0 && stack[stack.length-1]>0 && currast<0){
+            let top=stack[stack.length-1];
+        
+            if(Math.abs(top)<Math.abs(currast))
+            {
+                stack.pop();
+            }
+            else if(Math.abs(top)==Math.abs(currast))
+            {
+                stack.pop();
+                currastAlive=false;
+            }
+            else{
+                 currastAlive=false;
             }
         }
-
-        if (alive) {
-            stack.push(ast);
+        if( currastAlive)
+        {
+          
+            stack.push(currast);
         }
     }
-
     return stack;
 };
